@@ -1,0 +1,17 @@
+# Arquivos de compilação
+*.class
+
+# Diretórios do IntelliJ
+.idea/
+*.iml
+
+# Diretórios de saída de build
+out/
+build/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

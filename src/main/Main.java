@@ -2,15 +2,13 @@ package main;
 
 import model.User;
 import model.Task;
+import service.TaskManager;
+import ui.Menu;
 
 public class Main {
     public static void main(String[] args) {
-        User pessoa1 = new User("Henrique", 28);
-        Task tarefa1 = new Task("Fazer janta", 1);
+        Menu menu = new Menu();
 
-        tarefa1.taskProprerty();
-        tarefa1.completeTask();
-        tarefa1.taskProprerty();
-
+        menu.teste();
     }
 }

@@ -1,6 +1,6 @@
 package service;
 
-import model.Task;
+import model.TimedTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,25 +10,28 @@ import java.util.List;
  * Permite adicionar, excluir completar e listar as tarefas.
  */
 public class TaskManager {
-    private List<Task> task;
+    private List<TimedTask> task;
 
+    /**
+     * Construtor da classe TaskManager
+     */
     public TaskManager(){
         this.task = new ArrayList<>();
     }
 
     /**
      * Método ara adicionar uma Task na lista de Task
-     * @param sName: recebe do usuário o nome da task
-     * @param iPriority: recebe do usuário a de prioridade
+     * @param sName      recebe do usuário o nome da task
+     * @param iPriority  recebe do usuário a de prioridade
      */
-    public void addTask(String sName, int iPriority){
-        Task newTask = new Task(sName, iPriority);
+    public void addTask(String sName, int iPriority, int iDurationTime){
+        TimedTask newTask = new TimedTask(sName, iPriority, iDurationTime);
         task.add(newTask);
     }
 
     /**
      * Método para deletar uma Task da lista
-     * @param x: recebe o índice da Task a ser deletada
+     * @param x recebe o índice da Task a ser deletada
      */
     public void deleteTask(int x){
         if(isOnTheList(x)){
@@ -38,8 +41,8 @@ public class TaskManager {
 
     /**
      * Método para verificar se um indíce está dentro da lista de Task
-     * @param x: índice passado pelo usuário
-     * @return false se não pertence à lista; true se pertence à lista
+     * @param x índice passado pelo usuário
+     * @return {@code true} se índice está na lista, {@code false} caso contrário.
      */
     public boolean isOnTheList(int x){
         if(x >= task.size()){
@@ -68,19 +71,29 @@ public class TaskManager {
         else{
             System.out.println("List of task:");
             for(int i = 0; i < task.size(); i++){
-                Task t = task.get(i);
-                System.out.println("Name: " + t.getTaskName() + "; Priority: " + t.getPriority() + "; Status: " + t.getCompleted());
+                TimedTask t = task.get(i);
+                System.out.println("Name: " + t.getTaskName() + "; Priority: " + t.getPriority() + "; Time: " + t.getDurationTime() +
+                        " minutes; Status: " + t.getCompleted());
             }
         }
     }
 
     /**
      * Método para marcar como feito uma task
-     * @param iIndex: indíce da task passado pelo usuário
+     * @param iIndex  indíce da task passado pelo usuário
      */
     public void completingTask(int iIndex){
-        Task t = task.get(iIndex);
+        TimedTask t = task.get(iIndex);
         t.completeTask();
     }
 
+
+    /**
+     * Método auxiliar para ver se uma tas foi concluída
+     * @param iIndex índice da task passada pelo usuário
+     */
+    public void isTheTaskCompleted(int iIndex){
+        TimedTask t = task.get(iIndex);
+        t.isCompleted();
+    }
 }

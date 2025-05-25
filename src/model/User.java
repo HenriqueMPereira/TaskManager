@@ -1,8 +1,8 @@
 package model;
 
 public class User {
-    private String sName;
-    private int iId;
+    protected String sName;
+    protected int iId;
 
     public User(String sName, int iId){
         this.sName = sName;

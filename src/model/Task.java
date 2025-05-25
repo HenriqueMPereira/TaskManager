@@ -1,41 +1,42 @@
 package model;
 
 public class Task {
-    private String sDescription;
+    private String sTaskName;
     private boolean bCompleted;
     private int iPriority;
 
-    public Task(String sDescription, int iPriority){
-        this.sDescription = sDescription;
+    public Task(String sTaskName, int iPriority){
+        this.sTaskName = sTaskName;
         this.bCompleted = false;
         this.iPriority = iPriority;
     }
 
-    public String getDescription(){
-        return sDescription;
+    /**
+     * Método que retorna a descrição da Task
+     */
+    public String getTaskName(){
+        return sTaskName;
     }
 
+    /**
+     * Método que retorna true se a Task foi cumprida e false se ainda não
+     */
     public boolean getCompleted(){
         return bCompleted;
     }
 
+    /**
+     * Método simples para retornar a prioridade da Task
+     * @return int prioridade da Task
+     */
     public int getPriority(){
         return iPriority;
     }
 
+    /**
+     * Método que marca como completa uma Task
+     */
     public void completeTask(){
         this.bCompleted = true;
-        System.out.println("A tarefa " + this.sDescription + " foi concluída!");
-    }
-
-    public void taskProprerty(){
-        System.out.println("Description: " + sDescription);
-        System.out.println("Priority: " + iPriority);
-        if(this.bCompleted == true){
-            System.out.println("Stats: Completed!");
-        }
-        else{
-            System.out.println("Stats: Not Completed!");
-        }
     }
 }
